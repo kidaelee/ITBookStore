@@ -49,6 +49,7 @@
 		01A0FC3F2775F70500F30271 /* ITBookStoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ITBookStoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A0FC432775F70500F30271 /* ITBookStoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookStoreUITests.swift; sourceTree = "<group>"; };
 		01A0FC452775F70500F30271 /* ITBookStoreUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookStoreUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		01A0FC522775F75000F30271 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +80,7 @@
 		01A0FC162775F70300F30271 = {
 			isa = PBXGroup;
 			children = (
+				01A0FC522775F75000F30271 /* README.md */,
 				01A0FC212775F70300F30271 /* ITBookStore */,
 				01A0FC382775F70500F30271 /* ITBookStoreTests */,
 				01A0FC422775F70500F30271 /* ITBookStoreUITests */,
