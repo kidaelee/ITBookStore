@@ -27,6 +27,14 @@
 		01A0FC6D2776037C00F30271 /* SearchITBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC6C2776037C00F30271 /* SearchITBookUseCase.swift */; };
 		01A0FC712776084A00F30271 /* ITBookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC702776084A00F30271 /* ITBookRepository.swift */; };
 		01A0FC7327760D7100F30271 /* ITBookUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC7227760D7100F30271 /* ITBookUseCaseTests.swift */; };
+		01A0FC7A2776160800F30271 /* ITBookStoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC792776160800F30271 /* ITBookStoreRepository.swift */; };
+		01A0FC7C2776175D00F30271 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC7B2776175D00F30271 /* API.swift */; };
+		01A0FC7F277617C300F30271 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 01A0FC7E277617C300F30271 /* Alamofire */; };
+		01A0FC81277617FE00F30271 /* ParameterConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC80277617FE00F30271 /* ParameterConvertable.swift */; };
+		01A0FC832776184A00F30271 /* ResponseConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC822776184A00F30271 /* ResponseConvertable.swift */; };
+		01A0FC8927761B1D00F30271 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC8827761B1D00F30271 /* APIError.swift */; };
+		01A0FC8B2776296600F30271 /* ITBookStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC8A2776296600F30271 /* ITBookStoreAPI.swift */; };
+		01A0FC8D27762C4D00F30271 /* API+ITBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC8C27762C4D00F30271 /* API+ITBooks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +73,13 @@
 		01A0FC6C2776037C00F30271 /* SearchITBookUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchITBookUseCase.swift; sourceTree = "<group>"; };
 		01A0FC702776084A00F30271 /* ITBookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookRepository.swift; sourceTree = "<group>"; };
 		01A0FC7227760D7100F30271 /* ITBookUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookUseCaseTests.swift; sourceTree = "<group>"; };
+		01A0FC792776160800F30271 /* ITBookStoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookStoreRepository.swift; sourceTree = "<group>"; };
+		01A0FC7B2776175D00F30271 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		01A0FC80277617FE00F30271 /* ParameterConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterConvertable.swift; sourceTree = "<group>"; };
+		01A0FC822776184A00F30271 /* ResponseConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseConvertable.swift; sourceTree = "<group>"; };
+		01A0FC8827761B1D00F30271 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		01A0FC8A2776296600F30271 /* ITBookStoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookStoreAPI.swift; sourceTree = "<group>"; };
+		01A0FC8C27762C4D00F30271 /* API+ITBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+ITBooks.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01A0FC5B2775F99400F30271 /* RxSwift in Frameworks */,
+				01A0FC7F277617C300F30271 /* Alamofire in Frameworks */,
 				01A0FC592775F99400F30271 /* RxRelay in Frameworks */,
 				01A0FC572775F99400F30271 /* RxCocoa in Frameworks */,
 			);
@@ -125,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				01A0FC782776130100F30271 /* Network */,
-				01A0FC772776129400F30271 /* Service */,
+				01A0FC772776129400F30271 /* Repositories */,
 				01A0FC6E2776057300F30271 /* Domain */,
 				01A0FC222775F70300F30271 /* AppDelegate.swift */,
 				01A0FC242775F70300F30271 /* SceneDelegate.swift */,
@@ -197,18 +213,33 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		01A0FC772776129400F30271 /* Service */ = {
+		01A0FC772776129400F30271 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				01A0FC792776160800F30271 /* ITBookStoreRepository.swift */,
 			);
-			path = Service;
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		01A0FC782776130100F30271 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				01A0FC8727761A1300F30271 /* ITBook */,
+				01A0FC7B2776175D00F30271 /* API.swift */,
+				01A0FC8827761B1D00F30271 /* APIError.swift */,
+				01A0FC80277617FE00F30271 /* ParameterConvertable.swift */,
+				01A0FC822776184A00F30271 /* ResponseConvertable.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		01A0FC8727761A1300F30271 /* ITBook */ = {
+			isa = PBXGroup;
+			children = (
+				01A0FC8A2776296600F30271 /* ITBookStoreAPI.swift */,
+				01A0FC8C27762C4D00F30271 /* API+ITBooks.swift */,
+			);
+			path = ITBook;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +262,7 @@
 				01A0FC562775F99400F30271 /* RxCocoa */,
 				01A0FC582775F99400F30271 /* RxRelay */,
 				01A0FC5A2775F99400F30271 /* RxSwift */,
+				01A0FC7E277617C300F30271 /* Alamofire */,
 			);
 			productName = ITBookStore;
 			productReference = 01A0FC1F2775F70300F30271 /* ITBookStore.app */;
@@ -314,6 +346,7 @@
 				01A0FC532775F99400F30271 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				01A0FC5E2775F9B700F30271 /* XCRemoteSwiftPackageReference "Quick" */,
 				01A0FC612775F9DB00F30271 /* XCRemoteSwiftPackageReference "RxNimble" */,
+				01A0FC7D277617C300F30271 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 01A0FC202775F70300F30271 /* Products */;
 			projectDirPath = "";
@@ -358,11 +391,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01A0FC8D27762C4D00F30271 /* API+ITBooks.swift in Sources */,
 				01A0FC272775F70300F30271 /* ViewController.swift in Sources */,
 				01A0FC232775F70300F30271 /* AppDelegate.swift in Sources */,
+				01A0FC832776184A00F30271 /* ResponseConvertable.swift in Sources */,
 				01A0FC252775F70300F30271 /* SceneDelegate.swift in Sources */,
+				01A0FC8B2776296600F30271 /* ITBookStoreAPI.swift in Sources */,
 				01A0FC712776084A00F30271 /* ITBookRepository.swift in Sources */,
+				01A0FC81277617FE00F30271 /* ParameterConvertable.swift in Sources */,
+				01A0FC7A2776160800F30271 /* ITBookStoreRepository.swift in Sources */,
 				01A0FC6D2776037C00F30271 /* SearchITBookUseCase.swift in Sources */,
+				01A0FC7C2776175D00F30271 /* API.swift in Sources */,
+				01A0FC8927761B1D00F30271 /* APIError.swift in Sources */,
 				01A0FC662775FC3400F30271 /* ITBook.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -758,6 +798,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		01A0FC7D277617C300F30271 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -795,6 +843,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 01A0FC612775F9DB00F30271 /* XCRemoteSwiftPackageReference "RxNimble" */;
 			productName = RxNimble;
+		};
+		01A0FC7E277617C300F30271 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01A0FC7D277617C300F30271 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
