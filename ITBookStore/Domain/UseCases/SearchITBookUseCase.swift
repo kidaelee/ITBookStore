@@ -11,9 +11,14 @@ import UIKit
 typealias ITBooksData = (books: [ITBook], isMore: Bool)
 
 protocol SearchITBookUseCase {
-    func searchITBooks(with title: String, page: Int?, completion: @escaping (Result<ITBooksData, Error>) -> Void)
-    func searchNewITBooks(completion: @escaping (Result<[ITBook], Error>) -> Void)
-    func getITBookDetail(with isbn13: String, completion: @escaping (Result<ITBookDetail, Error>) -> Void)
+    @discardableResult
+    func searchITBooks(with title: String, page: Int?, completion: @escaping (Result<ITBooksData, Error>) -> Void) -> Cancellable?
+    
+    @discardableResult
+    func searchNewITBooks(completion: @escaping (Result<[ITBook], Error>) -> Void) -> Cancellable?
+    
+    @discardableResult
+    func getITBookDetail(with isbn13: String, completion: @escaping (Result<ITBookDetail, Error>) -> Void) -> Cancellable?
 }
 
 struct DefaultSearchITBookUseCase: SearchITBookUseCase {
@@ -23,15 +28,18 @@ struct DefaultSearchITBookUseCase: SearchITBookUseCase {
         self.repository = repository
     }
     
-    func searchITBooks(with title: String, page: Int? = 1 , completion: @escaping (Result<ITBooksData, Error>) -> Void) {
+    @discardableResult
+    func searchITBooks(with title: String, page: Int? = 1 , completion: @escaping (Result<ITBooksData, Error>) -> Void) -> Cancellable? {
         repository.fetchITBook(with: title, page: page, completion: completion)
     }
     
-    func searchNewITBooks(completion: @escaping (Result<[ITBook], Error>) -> Void) {
+    @discardableResult
+    func searchNewITBooks(completion: @escaping (Result<[ITBook], Error>) -> Void) -> Cancellable? {
         repository.fetchNewITBook(completion: completion)
     }
     
-    func getITBookDetail(with isbn13: String, completion: @escaping (Result<ITBookDetail, Error>) -> Void) {
+    @discardableResult
+    func getITBookDetail(with isbn13: String, completion: @escaping (Result<ITBookDetail, Error>) -> Void) -> Cancellable? {
         repository.fetchITBookDetail(with: isbn13, completion: completion)
     }
 }

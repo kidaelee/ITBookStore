@@ -35,20 +35,21 @@ class ITBookUseCaseTests: QuickSpec {
                                      url: "",
                                      pdf: [:])
         
-        func fetchITBook(with title: String, page: Int?, completion: @escaping (Result<ITBooksData, Error>) -> Void) {
+        func fetchITBook(with title: String, page: Int?, completion: @escaping (Result<ITBooksData, Error>) -> Void) -> Cancellable? {
             let data = ITBooksData(books: books, isMore: false)
             completion(.success(data))
+            return nil
         }
         
-        func fetchNewITBook(completion: @escaping (Result<[ITBook], Error>) -> Void) {
+        func fetchNewITBook(completion: @escaping (Result<[ITBook], Error>) -> Void) -> Cancellable? {
             completion(.success(books))
+            return nil
         }
         
-        func fetchITBookDetail(with isbn13: String, completion: @escaping (Result<ITBookDetail, Error>) -> Void) {
+        func fetchITBookDetail(with isbn13: String, completion: @escaping (Result<ITBookDetail, Error>) -> Void) -> Cancellable? {
             completion(.success(booDetail))
+            return nil
         }
-        
-        
     }
 
     override func spec() {

@@ -8,9 +8,14 @@
 import Foundation
 
 protocol ITBookRepository {
-    func fetchITBook(with title: String, page: Int?, completion: @escaping (Result<ITBooksData, Error>) -> Void)
-    func fetchNewITBook(completion: @escaping (Result<[ITBook], Error>) -> Void)
-    func fetchITBookDetail(with isbn13: String, completion: @escaping (Result<ITBookDetail, Error>) -> Void)
+    @discardableResult
+    func fetchITBook(with title: String, page: Int?, completion: @escaping (Result<ITBooksData, Error>) -> Void) -> Cancellable?
+    
+    @discardableResult
+    func fetchNewITBook(completion: @escaping (Result<[ITBook], Error>) -> Void) -> Cancellable?
+    
+    @discardableResult
+    func fetchITBookDetail(with isbn13: String, completion: @escaping (Result<ITBookDetail, Error>) -> Void) -> Cancellable?
 }
 
 

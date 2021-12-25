@@ -9,7 +9,15 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:ITBookStore.xcodeproj",
+          "identifier" : "01A0FC1E2775F70300F30271",
+          "name" : "ITBookStore"
+        }
+      ]
+    },
     "targetForVariableExpansion" : {
       "containerPath" : "container:ITBookStore.xcodeproj",
       "identifier" : "01A0FC1E2775F70300F30271",

@@ -8,7 +8,8 @@
 import Foundation
 
 struct ITBookStoreRepository: ITBookRepository {
-    func fetchITBook(with title: String, page: Int?, completion: @escaping (Result<ITBooksData, Error>) -> Void) {
+    @discardableResult
+    func fetchITBook(with title: String, page: Int?, completion: @escaping (Result<ITBooksData, Error>) -> Void) -> Cancellable? {
         ITBookStoreAPI.ITBooks(title: title, page: page ?? 1)
             .request(parameter: EmptyRequest()) { result in
                 switch result {
@@ -23,7 +24,8 @@ struct ITBookStoreRepository: ITBookRepository {
             }
     }
     
-    func fetchNewITBook(completion: @escaping (Result<[ITBook], Error>) -> Void) {
+    @discardableResult
+    func fetchNewITBook(completion: @escaping (Result<[ITBook], Error>) -> Void) -> Cancellable?  {
         ITBookStoreAPI.NewITBooks()
             .request(parameter: EmptyRequest()) { result in
                 switch result {
@@ -36,7 +38,8 @@ struct ITBookStoreRepository: ITBookRepository {
             }
     }
     
-    func fetchITBookDetail(with isbn13: String, completion: @escaping (Result<ITBookDetail, Error>) -> Void) {
+    @discardableResult
+    func fetchITBookDetail(with isbn13: String, completion: @escaping (Result<ITBookDetail, Error>) -> Void) -> Cancellable?  {
         ITBookStoreAPI.ITBookDetail(isbn13: isbn13)
             .request(parameter: EmptyRequest()) { result in
                 switch result {
