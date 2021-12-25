@@ -22,5 +22,12 @@ struct ITBookDetail {
     let price: String
     let image: String
     let url: String
-    let pdf: [String]
+    let pdf: [String: String]?
+}
+
+
+extension ITBookDetail: Equatable {
+    public static func == (lhs: ITBookDetail, rhs: ITBookDetail) -> Bool {
+        return lhs.isbn13 == rhs.isbn13 && lhs.isbn10 == rhs.isbn10
+    }
 }

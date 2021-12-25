@@ -13,24 +13,11 @@ struct ITBookStoreAPI {
     }
     
     struct ITBooks {
-        enum SearchMode {
-            case `default`
-            case new
-            
-            var uri: String {
-                switch self {
-                case .new:
-                    return "new"
-                case .default:
-                    return "search"
-                }
-            }
-        }
-        
-        let searchMode: SearchMode
         let title: String
         let page: Int
     }
+    
+    struct NewITBooks {}
     
     struct ITBookDetail {
         let isbn13: String

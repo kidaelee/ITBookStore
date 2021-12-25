@@ -8,7 +8,6 @@
 import Foundation
 import Alamofire
 import RxSwift
-import SwiftyJSON
 
 protocol API {
     var baseUrl: String { get }

@@ -26,15 +26,8 @@ extension ITBookStoreAPI.ITBookDetail: API {
 }
 
 struct ITBookDetailResponse: ResponseConvertable {
-    
-    var apiErrorCode: String? {
-        error
-    }
-    
-    var isSuccess: Bool {
-        error == "0"
-    }
-    
+    var apiErrorCode: String? { error }
+    var isSuccess: Bool { error == "0" }
     var error: String
     let title: String
     let subtitle: String
@@ -50,5 +43,5 @@ struct ITBookDetailResponse: ResponseConvertable {
     let price: String
     let image: String
     let url: String
-    let pdf: [String]
+    let pdf: [String: String]?
 }

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 protocol ResponseConvertable: Decodable {
     var apiErrorCode: String? { get }

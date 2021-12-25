@@ -1,0 +1,41 @@
+{
+  "configurations" : [
+    {
+      "id" : "610384AC-E691-4D33-AB64-10E6D01AD7ED",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:ITBookStore.xcodeproj",
+      "identifier" : "01A0FC1E2775F70300F30271",
+      "name" : "ITBookStore"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "skippedTests" : [
+        "ITBookSotreAPITests"
+      ],
+      "target" : {
+        "containerPath" : "container:ITBookStore.xcodeproj",
+        "identifier" : "01A0FC342775F70500F30271",
+        "name" : "ITBookStoreTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "target" : {
+        "containerPath" : "container:ITBookStore.xcodeproj",
+        "identifier" : "01A0FC3E2775F70500F30271",
+        "name" : "ITBookStoreUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

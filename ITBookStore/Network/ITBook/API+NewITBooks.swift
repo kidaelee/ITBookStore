@@ -1,5 +1,5 @@
 //
-//  API+ITBooks.swift
+//  API+NewITBooks.swift
 //  ITBookStore
 //
 //  Created by Nick on 2021/12/25.
@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-extension ITBookStoreAPI.ITBooks: API {
+extension ITBookStoreAPI.NewITBooks: API {
     var baseUrl: String {
         ITBookStoreAPI.baseUrl
     }
@@ -18,14 +18,14 @@ extension ITBookStoreAPI.ITBooks: API {
     }
     
     var uri: String {
-        "search/\(title)/\(page)"
+        "/new"
     }
     
     typealias Parameter = EmptyRequest
-    typealias Response = ITBooksResponse
+    typealias Response = NewITBooksResponse
 }
 
-struct ITBooksResponse: ResponseConvertable {
+struct NewITBooksResponse: ResponseConvertable {
     struct Book: Decodable {
         var title: String
         var subtitle: String
@@ -34,17 +34,16 @@ struct ITBooksResponse: ResponseConvertable {
         var image: String
         var url: String
     }
-    
+
     var apiErrorCode: String? {
         error
     }
-    
+
     var isSuccess: Bool {
         error == "0"
     }
-    
+
     var error: String
     var total: String
-    var page: String
     var books: [Book]
 }

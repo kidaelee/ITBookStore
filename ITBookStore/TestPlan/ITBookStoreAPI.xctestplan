@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "5800DC5B-CD1A-4F5D-BA5C-5E1593594CFD",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "skippedTests" : [
+        "ITBookStoreEntityTests",
+        "ITBookUseCaseTests"
+      ],
+      "target" : {
+        "containerPath" : "container:ITBookStore.xcodeproj",
+        "identifier" : "01A0FC342775F70500F30271",
+        "name" : "ITBookStoreTests"
+      }
+    }
+  ],
+  "version" : 1
+}

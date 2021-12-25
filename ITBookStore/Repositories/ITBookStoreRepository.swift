@@ -8,21 +8,23 @@
 import Foundation
 
 struct ITBookStoreRepository: ITBookRepository {
-    func fetchITBook(with title: String, page: Int?, completion: @escaping (Result<[ITBook], Error>) -> Void) {
-        ITBookStoreAPI.ITBooks(searchMode: .default, title: title, page: page ?? 1)
+    func fetchITBook(with title: String, page: Int?, completion: @escaping (Result<ITBooksData, Error>) -> Void) {
+        ITBookStoreAPI.ITBooks(title: title, page: page ?? 1)
             .request(parameter: EmptyRequest()) { result in
                 switch result {
                 case .success(let response):
                     let books = response.ITBooks
-                    completion(.success(books))
+                    let isMore = response.total.intValue > response.page.intValue
+                    let data = ITBooksData(books: books, isMore: isMore)
+                    completion(.success(data))
                 case .failure(let error):
                     completion(.failure(error))
                 }
             }
     }
     
-    func fetchNewITBook(with title: String, page: Int?, completion: @escaping (Result<[ITBook], Error>) -> Void) {
-        ITBookStoreAPI.ITBooks(searchMode: .new, title: title, page: page ?? 1)
+    func fetchNewITBook(completion: @escaping (Result<[ITBook], Error>) -> Void) {
+        ITBookStoreAPI.NewITBooks()
             .request(parameter: EmptyRequest()) { result in
                 switch result {
                 case .success(let response):
@@ -50,6 +52,19 @@ struct ITBookStoreRepository: ITBookRepository {
 }
 
 private extension ITBookStoreAPI.ITBooks.Response {
+    var ITBooks: [ITBook] {
+        books.map {
+            ITBookStore.ITBook(title: $0.title,
+                               subtitle: $0.subtitle,
+                               isbn13: $0.isbn13,
+                               price: $0.price,
+                               image: $0.image,
+                               url: $0.url)
+        }
+    }
+}
+
+private extension ITBookStoreAPI.NewITBooks.Response {
     var ITBooks: [ITBook] {
         books.map {
             ITBookStore.ITBook(title: $0.title,
