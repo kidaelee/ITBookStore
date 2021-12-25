@@ -12,7 +12,7 @@ import Nimble
 
 @testable import ITBookStore
 
-class ITBookStoreMemoryCacheTests: QuickSpec {
+final class ITBookStoreMemoryCacheTests: QuickSpec {
     override func spec() {
         
         var memoryCache: UIImageMemoryCache!

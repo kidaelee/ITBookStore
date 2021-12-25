@@ -10,7 +10,7 @@ import Quick
 import Nimble
 @testable import ITBookStore
 
-class ITBookStoreEntityTests: QuickSpec {
+final class ITBookStoreEntityTests: QuickSpec {
 
     override func spec() {
         var book1: ITBook!

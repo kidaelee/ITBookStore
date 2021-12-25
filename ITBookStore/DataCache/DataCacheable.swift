@@ -18,6 +18,8 @@ protocol Cacheable {
 }
 
 final class UIImageMemoryCache: Cacheable {
+    static let shared = UIImageMemoryCache()
+    
     @Atomic private var cache: NSCache = NSCache<NSString, UIImage>()
     
     func content(for key: String) -> UIImage? {
@@ -49,6 +51,11 @@ final class DataDiskCache: Cacheable {
     
     init(cachePath: URL) {
         self.cachePath = cachePath
+    }
+    
+    static var `default`: DataDiskCache {
+        let cachePath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+        return DataDiskCache(cachePath: cachePath)
     }
     
     func content(for key: String) -> Data? {

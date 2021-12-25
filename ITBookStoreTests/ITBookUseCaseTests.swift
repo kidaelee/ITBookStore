@@ -11,7 +11,7 @@ import Nimble
 
 @testable import ITBookStore
 
-class ITBookUseCaseTests: QuickSpec {
+final class ITBookUseCaseTests: QuickSpec {
     struct MockITBookRepository: ITBookRepository {
         let books = [
             ITBook(title: "1", subtitle: "1", isbn13: "1", price: "1", image: "1", url: "1"),

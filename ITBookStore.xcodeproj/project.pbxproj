@@ -18,6 +18,7 @@
 		017A572A27774EA500642F72 /* DataCacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A572927774EA500642F72 /* DataCacheable.swift */; };
 		017A572D27775C0200642F72 /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A572C27775C0200642F72 /* Atomic.swift */; };
 		017A572F27776A7800642F72 /* ITBookStoreCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A572E27776A7800642F72 /* ITBookStoreCacheTests.swift */; };
+		017A573127778F1900642F72 /* ITBookStoreImageViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017A573027778F1900642F72 /* ITBookStoreImageViewTests.swift */; };
 		01A0FC232775F70300F30271 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC222775F70300F30271 /* AppDelegate.swift */; };
 		01A0FC252775F70300F30271 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC242775F70300F30271 /* SceneDelegate.swift */; };
 		01A0FC272775F70300F30271 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC262775F70300F30271 /* ViewController.swift */; };
@@ -79,6 +80,7 @@
 		017A572927774EA500642F72 /* DataCacheable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCacheable.swift; sourceTree = "<group>"; };
 		017A572C27775C0200642F72 /* Atomic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atomic.swift; sourceTree = "<group>"; };
 		017A572E27776A7800642F72 /* ITBookStoreCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookStoreCacheTests.swift; sourceTree = "<group>"; };
+		017A573027778F1900642F72 /* ITBookStoreImageViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookStoreImageViewTests.swift; sourceTree = "<group>"; };
 		01A0FC1F2775F70300F30271 /* ITBookStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITBookStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A0FC222775F70300F30271 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01A0FC242775F70300F30271 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				01A0FC392775F70500F30271 /* ITBookStoreEntityTests.swift */,
 				01A0FC7227760D7100F30271 /* ITBookUseCaseTests.swift */,
 				017A572E27776A7800642F72 /* ITBookStoreCacheTests.swift */,
+				017A573027778F1900642F72 /* ITBookStoreImageViewTests.swift */,
 				017A57192776DCDB00642F72 /* APITests */,
 			);
 			path = ITBookStoreTests;
@@ -516,6 +519,7 @@
 				017A571B2776DD1000642F72 /* ITBookSotreAPITests.swift in Sources */,
 				01A0FC3A2775F70500F30271 /* ITBookStoreEntityTests.swift in Sources */,
 				017A572F27776A7800642F72 /* ITBookStoreCacheTests.swift in Sources */,
+				017A573127778F1900642F72 /* ITBookStoreImageViewTests.swift in Sources */,
 				01A0FC7327760D7100F30271 /* ITBookUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
