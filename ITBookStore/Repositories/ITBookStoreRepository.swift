@@ -9,26 +9,75 @@ import Foundation
 
 struct ITBookStoreRepository: ITBookRepository {
     func fetchITBook(with title: String, page: Int?, completion: @escaping (Result<[ITBook], Error>) -> Void) {
-        ITBookStoreAPI.ITBooks(title: title, page: page ?? 1)
+        ITBookStoreAPI.ITBooks(searchMode: .default, title: title, page: page ?? 1)
             .request(parameter: EmptyRequest()) { result in
                 switch result {
                 case .success(let response):
-                    let books = response.books.map { $0.converToITBook() }
+                    let books = response.ITBooks
                     completion(.success(books))
                 case .failure(let error):
                     completion(.failure(error))
                 }
             }
     }
+    
+    func fetchNewITBook(with title: String, page: Int?, completion: @escaping (Result<[ITBook], Error>) -> Void) {
+        ITBookStoreAPI.ITBooks(searchMode: .new, title: title, page: page ?? 1)
+            .request(parameter: EmptyRequest()) { result in
+                switch result {
+                case .success(let response):
+                    let books = response.ITBooks
+                    completion(.success(books))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+    
+    func fetchITBookDetail(with isbn13: String, completion: @escaping (Result<ITBookDetail, Error>) -> Void) {
+        ITBookStoreAPI.ITBookDetail(isbn13: isbn13)
+            .request(parameter: EmptyRequest()) { result in
+                switch result {
+                case .success(let response):
+                    let bookDetail = response.ITBookDetail
+                    completion(.success(bookDetail))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+    
 }
 
-private extension ITBookStoreAPI.ITBooks.Response.ITBookData {
-    func converToITBook() -> ITBook {
-        ITBook(title: self.title,
-               subtitle: self.subtitle,
-               isbn13: self.isbn13,
-               price: self.price,
-               image: self.image,
-               url: self.url)
+private extension ITBookStoreAPI.ITBooks.Response {
+    var ITBooks: [ITBook] {
+        books.map {
+            ITBookStore.ITBook(title: $0.title,
+                               subtitle: $0.subtitle,
+                               isbn13: $0.isbn13,
+                               price: $0.price,
+                               image: $0.image,
+                               url: $0.url)
+        }
+    }
+}
+
+private extension ITBookStoreAPI.ITBookDetail.Response {
+    var ITBookDetail: ITBookDetail {
+        ITBookStore.ITBookDetail(title: title,
+                                 subtitle: subtitle,
+                                 authors: authors,
+                                 publisher: publisher,
+                                 language: language,
+                                 isbn10: isbn10,
+                                 isbn13: isbn13,
+                                 pages: pages.intValue,
+                                 year: year.intValue,
+                                 rating: rating.floatValue,
+                                 desc: desc,
+                                 price: price,
+                                 image: image,
+                                 url: url,
+                                 pdf: pdf)
     }
 }

@@ -8,12 +8,12 @@
 import Foundation
 
 struct ITBook {
-    var title: String
-    var subtitle: String
-    var isbn13: String
-    var price: String
-    var image: String
-    var url: String
+    let title: String
+    let subtitle: String
+    let isbn13: String
+    let price: String
+    let image: String
+    let url: String
 }
 
 extension ITBook: Equatable {

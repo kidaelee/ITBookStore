@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010262AA2776BB4900256906 /* ITBookDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010262A92776BB4900256906 /* ITBookDetail.swift */; };
+		010262AC2776BC1100256906 /* API+ITBookDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010262AB2776BC1100256906 /* API+ITBookDetail.swift */; };
+		010262AF2776C56500256906 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010262AE2776C56500256906 /* String+Extension.swift */; };
 		01A0FC232775F70300F30271 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC222775F70300F30271 /* AppDelegate.swift */; };
 		01A0FC252775F70300F30271 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC242775F70300F30271 /* SceneDelegate.swift */; };
 		01A0FC272775F70300F30271 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC262775F70300F30271 /* ViewController.swift */; };
@@ -55,6 +58,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010262A92776BB4900256906 /* ITBookDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookDetail.swift; sourceTree = "<group>"; };
+		010262AB2776BC1100256906 /* API+ITBookDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+ITBookDetail.swift"; sourceTree = "<group>"; };
+		010262AE2776C56500256906 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		01A0FC1F2775F70300F30271 /* ITBookStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ITBookStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A0FC222775F70300F30271 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01A0FC242775F70300F30271 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +121,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		010262AD2776C55800256906 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				010262AE2776C56500256906 /* String+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		01A0FC162775F70300F30271 = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +154,7 @@
 		01A0FC212775F70300F30271 /* ITBookStore */ = {
 			isa = PBXGroup;
 			children = (
+				010262AD2776C55800256906 /* Extensions */,
 				01A0FC782776130100F30271 /* Network */,
 				01A0FC772776129400F30271 /* Repositories */,
 				01A0FC6E2776057300F30271 /* Domain */,
@@ -176,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				01A0FC652775FC3400F30271 /* ITBook.swift */,
+				010262A92776BB4900256906 /* ITBookDetail.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -238,6 +254,7 @@
 			children = (
 				01A0FC8A2776296600F30271 /* ITBookStoreAPI.swift */,
 				01A0FC8C27762C4D00F30271 /* API+ITBooks.swift */,
+				010262AB2776BC1100256906 /* API+ITBookDetail.swift */,
 			);
 			path = ITBook;
 			sourceTree = "<group>";
@@ -391,12 +408,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				010262AF2776C56500256906 /* String+Extension.swift in Sources */,
 				01A0FC8D27762C4D00F30271 /* API+ITBooks.swift in Sources */,
 				01A0FC272775F70300F30271 /* ViewController.swift in Sources */,
 				01A0FC232775F70300F30271 /* AppDelegate.swift in Sources */,
+				010262AC2776BC1100256906 /* API+ITBookDetail.swift in Sources */,
 				01A0FC832776184A00F30271 /* ResponseConvertable.swift in Sources */,
 				01A0FC252775F70300F30271 /* SceneDelegate.swift in Sources */,
 				01A0FC8B2776296600F30271 /* ITBookStoreAPI.swift in Sources */,
+				010262AA2776BB4900256906 /* ITBookDetail.swift in Sources */,
 				01A0FC712776084A00F30271 /* ITBookRepository.swift in Sources */,
 				01A0FC81277617FE00F30271 /* ParameterConvertable.swift in Sources */,
 				01A0FC7A2776160800F30271 /* ITBookStoreRepository.swift in Sources */,

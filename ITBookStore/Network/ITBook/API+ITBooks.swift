@@ -18,7 +18,7 @@ extension ITBookStoreAPI.ITBooks: API {
     }
     
     var uri: String {
-        "search/\(title)/\(page)"
+        "\(searchMode.uri)/\(title)/\(page)"
     }
     
     typealias Parameter = EmptyRequest
@@ -26,7 +26,7 @@ extension ITBookStoreAPI.ITBooks: API {
 }
 
 struct ITBooksResponse: ResponseConvertable {
-    struct ITBookData: Decodable {
+    struct Book: Decodable {
         var title: String
         var subtitle: String
         var isbn13: String
@@ -36,7 +36,7 @@ struct ITBooksResponse: ResponseConvertable {
     }
     
     var apiErrorCode: String? {
-         error
+        error
     }
     
     var isSuccess: Bool {
@@ -46,5 +46,5 @@ struct ITBooksResponse: ResponseConvertable {
     var error: String
     var total: String
     var page: String
-    var books: [ITBookData]
+    var books: [Book]
 }
