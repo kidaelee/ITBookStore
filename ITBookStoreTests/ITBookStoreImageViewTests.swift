@@ -30,16 +30,16 @@ final class ITBookStoreImageViewTests: QuickSpec {
                 imageView = UIImageView()
                 mockImageDownloader = MockImageDownloader()
             }
-            context("이미지를 다운로드 하면") {
+            context("이미지를 다운로드 성공 하면") {
                 beforeEach {
                     imageView.setImage(with: "test.jpg", imageDownloader: mockImageDownloader)
                 }
                 
-                it("이미지가 있다") {
+                it("이미지가 할당 된다") {
                     expect(imageView.image).toNot(beNil())
                 }
                 
-                it("메모리 이미지가 캐시된다") {
+                it("메모리에 이미지가 캐시된다") {
                     let memoryCache = UIImageMemoryCache.shared
                     expect(memoryCache.content(for:"test.jpg")).toNot(beNil())
                 }

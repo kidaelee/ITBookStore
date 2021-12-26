@@ -47,6 +47,17 @@
 		01A0FC8927761B1D00F30271 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC8827761B1D00F30271 /* APIError.swift */; };
 		01A0FC8B2776296600F30271 /* ITBookStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC8A2776296600F30271 /* ITBookStoreAPI.swift */; };
 		01A0FC8D27762C4D00F30271 /* API+ITBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC8C27762C4D00F30271 /* API+ITBooks.swift */; };
+		01EF80C627781A43007D36A5 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = 01EF80C527781A43007D36A5 /* Differentiator */; };
+		01EF80C827781A43007D36A5 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 01EF80C727781A43007D36A5 /* RxDataSources */; };
+		01EF80CB27781A74007D36A5 /* RxOptional in Frameworks */ = {isa = PBXBuildFile; productRef = 01EF80CA27781A74007D36A5 /* RxOptional */; };
+		01EF80CD27781A86007D36A5 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF80CC27781A86007D36A5 /* SearchTableViewController.swift */; };
+		01EF80D027781C26007D36A5 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 01EF80CF27781C26007D36A5 /* Then */; };
+		01EF80D227781D7E007D36A5 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF80D127781D7E007D36A5 /* SearchResultViewController.swift */; };
+		01EF80D7277824EC007D36A5 /* StoryBoardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF80D6277824EC007D36A5 /* StoryBoardInstantiable.swift */; };
+		01EF80D9277828E2007D36A5 /* SearchTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF80D8277828E2007D36A5 /* SearchTableViewModel.swift */; };
+		01EF80DB277833D0007D36A5 /* ITBookStoreViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF80DA277833D0007D36A5 /* ITBookStoreViewModelTests.swift */; };
+		01EF80DD277849DA007D36A5 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 01EF80DC277849DA007D36A5 /* RxRelay */; };
+		01EF80DF277849DA007D36A5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 01EF80DE277849DA007D36A5 /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +117,11 @@
 		01A0FC8827761B1D00F30271 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		01A0FC8A2776296600F30271 /* ITBookStoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookStoreAPI.swift; sourceTree = "<group>"; };
 		01A0FC8C27762C4D00F30271 /* API+ITBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+ITBooks.swift"; sourceTree = "<group>"; };
+		01EF80CC27781A86007D36A5 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		01EF80D127781D7E007D36A5 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		01EF80D6277824EC007D36A5 /* StoryBoardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoardInstantiable.swift; sourceTree = "<group>"; };
+		01EF80D8277828E2007D36A5 /* SearchTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewModel.swift; sourceTree = "<group>"; };
+		01EF80DA277833D0007D36A5 /* ITBookStoreViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookStoreViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,8 +129,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01EF80CB27781A74007D36A5 /* RxOptional in Frameworks */,
 				01A0FC5B2775F99400F30271 /* RxSwift in Frameworks */,
+				01EF80C627781A43007D36A5 /* Differentiator in Frameworks */,
+				01EF80D027781C26007D36A5 /* Then in Frameworks */,
 				01A0FC7F277617C300F30271 /* Alamofire in Frameworks */,
+				01EF80C827781A43007D36A5 /* RxDataSources in Frameworks */,
 				01A0FC592775F99400F30271 /* RxRelay in Frameworks */,
 				01A0FC572775F99400F30271 /* RxCocoa in Frameworks */,
 			);
@@ -124,6 +144,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01EF80DF277849DA007D36A5 /* RxSwift in Frameworks */,
+				01EF80DD277849DA007D36A5 /* RxRelay in Frameworks */,
 				01A0FC602775F9B700F30271 /* Quick in Frameworks */,
 				01A0FC69277600E100F30271 /* RxNimble in Frameworks */,
 				01A0FC5D2775F99400F30271 /* RxTest in Frameworks */,
@@ -195,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				017A572C27775C0200642F72 /* Atomic.swift */,
+				01EF80D6277824EC007D36A5 /* StoryBoardInstantiable.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -224,6 +247,7 @@
 		01A0FC212775F70300F30271 /* ITBookStore */ = {
 			isa = PBXGroup;
 			children = (
+				01EF80C22778195E007D36A5 /* Scenes */,
 				017A572B27775BFB00642F72 /* Util */,
 				017A572827774E9800642F72 /* DataCache */,
 				010262B02776C92C00256906 /* Common */,
@@ -250,6 +274,7 @@
 				01A0FC7227760D7100F30271 /* ITBookUseCaseTests.swift */,
 				017A572E27776A7800642F72 /* ITBookStoreCacheTests.swift */,
 				017A573027778F1900642F72 /* ITBookStoreImageViewTests.swift */,
+				01EF80DA277833D0007D36A5 /* ITBookStoreViewModelTests.swift */,
 				017A57192776DCDB00642F72 /* APITests */,
 			);
 			path = ITBookStoreTests;
@@ -338,6 +363,24 @@
 			path = ITBook;
 			sourceTree = "<group>";
 		};
+		01EF80C22778195E007D36A5 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				01EF80C32778198A007D36A5 /* Search */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		01EF80C32778198A007D36A5 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				01EF80CC27781A86007D36A5 /* SearchTableViewController.swift */,
+				01EF80D127781D7E007D36A5 /* SearchResultViewController.swift */,
+				01EF80D8277828E2007D36A5 /* SearchTableViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -359,6 +402,10 @@
 				01A0FC582775F99400F30271 /* RxRelay */,
 				01A0FC5A2775F99400F30271 /* RxSwift */,
 				01A0FC7E277617C300F30271 /* Alamofire */,
+				01EF80C527781A43007D36A5 /* Differentiator */,
+				01EF80C727781A43007D36A5 /* RxDataSources */,
+				01EF80CA27781A74007D36A5 /* RxOptional */,
+				01EF80CF27781C26007D36A5 /* Then */,
 			);
 			productName = ITBookStore;
 			productReference = 01A0FC1F2775F70300F30271 /* ITBookStore.app */;
@@ -383,6 +430,8 @@
 				01A0FC5C2775F99400F30271 /* RxTest */,
 				01A0FC5F2775F9B700F30271 /* Quick */,
 				01A0FC68277600E100F30271 /* RxNimble */,
+				01EF80DC277849DA007D36A5 /* RxRelay */,
+				01EF80DE277849DA007D36A5 /* RxSwift */,
 			);
 			productName = ITBookStoreTests;
 			productReference = 01A0FC352775F70500F30271 /* ITBookStoreTests.xctest */;
@@ -443,6 +492,9 @@
 				01A0FC5E2775F9B700F30271 /* XCRemoteSwiftPackageReference "Quick" */,
 				01A0FC612775F9DB00F30271 /* XCRemoteSwiftPackageReference "RxNimble" */,
 				01A0FC7D277617C300F30271 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				01EF80C427781A43007D36A5 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				01EF80C927781A74007D36A5 /* XCRemoteSwiftPackageReference "RxOptional" */,
+				01EF80CE27781C26007D36A5 /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 01A0FC202775F70300F30271 /* Products */;
 			projectDirPath = "";
@@ -489,6 +541,7 @@
 			files = (
 				010262AF2776C56500256906 /* String+Extension.swift in Sources */,
 				017A571D2776E46600642F72 /* API+NewITBooks.swift in Sources */,
+				01EF80CD27781A86007D36A5 /* SearchTableViewController.swift in Sources */,
 				01A0FC8D27762C4D00F30271 /* API+ITBooks.swift in Sources */,
 				01A0FC272775F70300F30271 /* ViewController.swift in Sources */,
 				01A0FC232775F70300F30271 /* AppDelegate.swift in Sources */,
@@ -496,6 +549,7 @@
 				01A0FC832776184A00F30271 /* ResponseConvertable.swift in Sources */,
 				01A0FC252775F70300F30271 /* SceneDelegate.swift in Sources */,
 				017A5727277744E400642F72 /* UIImageView+Extension.swift in Sources */,
+				01EF80D7277824EC007D36A5 /* StoryBoardInstantiable.swift in Sources */,
 				01A0FC8B2776296600F30271 /* ITBookStoreAPI.swift in Sources */,
 				017A572D27775C0200642F72 /* Atomic.swift in Sources */,
 				017A572327770AE900642F72 /* Cancellable.swift in Sources */,
@@ -506,8 +560,10 @@
 				01A0FC7A2776160800F30271 /* ITBookStoreRepository.swift in Sources */,
 				01A0FC6D2776037C00F30271 /* SearchITBookUseCase.swift in Sources */,
 				01A0FC7C2776175D00F30271 /* API.swift in Sources */,
+				01EF80D9277828E2007D36A5 /* SearchTableViewModel.swift in Sources */,
 				01A0FC8927761B1D00F30271 /* APIError.swift in Sources */,
 				01A0FC662775FC3400F30271 /* ITBook.swift in Sources */,
+				01EF80D227781D7E007D36A5 /* SearchResultViewController.swift in Sources */,
 				017A572A27774EA500642F72 /* DataCacheable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,6 +574,7 @@
 			files = (
 				017A571B2776DD1000642F72 /* ITBookSotreAPITests.swift in Sources */,
 				01A0FC3A2775F70500F30271 /* ITBookStoreEntityTests.swift in Sources */,
+				01EF80DB277833D0007D36A5 /* ITBookStoreViewModelTests.swift in Sources */,
 				017A572F27776A7800642F72 /* ITBookStoreCacheTests.swift in Sources */,
 				017A573127778F1900642F72 /* ITBookStoreImageViewTests.swift in Sources */,
 				01A0FC7327760D7100F30271 /* ITBookUseCaseTests.swift in Sources */,
@@ -914,6 +971,30 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		01EF80C427781A43007D36A5 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		01EF80C927781A74007D36A5 /* XCRemoteSwiftPackageReference "RxOptional" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxOptional";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		01EF80CE27781C26007D36A5 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -956,6 +1037,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 01A0FC7D277617C300F30271 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		01EF80C527781A43007D36A5 /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01EF80C427781A43007D36A5 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		01EF80C727781A43007D36A5 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01EF80C427781A43007D36A5 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
+		01EF80CA27781A74007D36A5 /* RxOptional */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01EF80C927781A74007D36A5 /* XCRemoteSwiftPackageReference "RxOptional" */;
+			productName = RxOptional;
+		};
+		01EF80CF27781C26007D36A5 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01EF80CE27781C26007D36A5 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		01EF80DC277849DA007D36A5 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01A0FC532775F99400F30271 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		01EF80DE277849DA007D36A5 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01A0FC532775F99400F30271 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
