@@ -33,7 +33,11 @@ final class SearchTableViewModel: ViewModelType {
         input.searchITBooks
             .do(onNext: { [weak self] keyword in
                 self?.resentlySearchKeyword = keyword
+                if (self?.searchKeywordHistory.contains(keyword) ?? false) {
+                    self?.searchKeywordHistory = self?.searchKeywordHistory.filter { $0 != keyword } ?? []
+                }
                 self?.searchKeywordHistory.insert(keyword, at: 0)
+                
                 self?.searchITBooks(with: keyword)
             })
             .map { [weak self] _ -> [String] in

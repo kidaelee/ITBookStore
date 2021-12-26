@@ -36,7 +36,7 @@ final class ITBookUseCaseTests: QuickSpec {
                                      pdf: [:])
         
         func fetchITBook(with title: String, page: Int?, completion: @escaping (Result<ITBooksData, Error>) -> Void) -> Cancellable? {
-            let data = ITBooksData(books: books, isMore: false)
+            let data = ITBooksData(books: books, page:1, totalPage: 1)
             completion(.success(data))
             return nil
         }

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-typealias ITBooksData = (books: [ITBook], isMore: Bool)
+typealias ITBooksData = (books: [ITBook], page: Int, totalPage: Int)
 
 protocol SearchITBookUseCase {
     @discardableResult

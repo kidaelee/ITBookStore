@@ -11,7 +11,7 @@ import Then
 import RxSwift
 import RxCocoa
 
-class SearchTableViewController: UITableViewController {
+final class SearchTableViewController: UITableViewController {
     private lazy var searchController: UISearchController = {
         UISearchController(searchResultsController: searchResultController).then {
             $0.searchResultsUpdater = self as UISearchResultsUpdating
@@ -49,12 +49,19 @@ class SearchTableViewController: UITableViewController {
         tableView.dataSource = nil
         tableView.delegate = nil
         
-        searchBar.rx.searchButtonClicked
-             .compactMap { [weak self] _ -> String? in
-                 self?.searchBar.text
-             }
-             .bind(to: searchKeywordSubject)
-             .disposed(by: disposeBag)
+        let sharedSearchKeyworkd = searchBar.rx.searchButtonClicked
+            .compactMap { [weak self] _ -> String? in
+                self?.searchBar.text
+            }
+            .share()
+        
+        sharedSearchKeyworkd
+            .bind(to: searchKeywordSubject)
+            .disposed(by: disposeBag)
+        
+        sharedSearchKeyworkd
+            .bind(to: searchResultController.searchITBookSubject)
+            .disposed(by: disposeBag)
         
         tableView.rx
             .modelSelected(String.self)
@@ -62,6 +69,7 @@ class SearchTableViewController: UITableViewController {
                 self?.searchController.isActive = true
                 self?.searchBar.text = keyword
                 self?.searchBar.endEditing(true)
+                self?.searchKeywordSubject.onNext(keyword)
             })
             .disposed(by: disposeBag)
     }
@@ -74,15 +82,10 @@ class SearchTableViewController: UITableViewController {
                 cell.textLabel?.text = keyword
             }
             .disposed(by: disposeBag)
-
     }
 }
 
 extension SearchTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        
-    }
-    
     func updateSearchResults(for searchController: UISearchController) {
         
     }

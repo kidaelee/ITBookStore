@@ -14,18 +14,18 @@ import RxNimble
 
 @testable import ITBookStore
 
-final class ITBookStoreViewModelTests: QuickSpec {
-    var disposeBag = DisposeBag()
+final class ITBookStoreSearchTableViewModelTests: QuickSpec {
     
     override func spec() {
         describe("SearchTableViewModel에") {
+            var disposeBag: DisposeBag!
             var searchTableViewModel: SearchTableViewModel!
             var scheduler: TestScheduler!
-            var disposeBag: DisposeBag!
             var output: SearchTableViewModel.Output!
             var keywordSubject: PublishSubject<String>!
             
             beforeEach {
+                disposeBag = DisposeBag()
                 searchTableViewModel = SearchTableViewModel()
                 scheduler = TestScheduler(initialClock: 0)
                 disposeBag = DisposeBag()
@@ -50,6 +50,106 @@ final class ITBookStoreViewModelTests: QuickSpec {
                             .next(10, ["test"]),
                             .next(20, ["test1", "test"])
                         ]))
+                }
+            }
+        }
+    }
+}
+
+final class ITBookStoreSearchResultViewModelTests: QuickSpec {
+    
+    struct MockITBookRepository: ITBookRepository {
+        let books = [
+            ITBook(title: "1", subtitle: "1", isbn13: "1", price: "1", image: "1", url: "1"),
+            ITBook(title: "11", subtitle: "2", isbn13: "2", price: "2", image: "2", url: "2"),
+            ITBook(title: "111", subtitle: "3", isbn13: "3", price: "3", image: "3", url: "3")
+        ]
+        
+        let booDetail = ITBookDetail(title: "title",
+                                     subtitle: "subtitle",
+                                     authors: "authors",
+                                     publisher: "publisher",
+                                     language: "language",
+                                     isbn10: "isbn10",
+                                     isbn13: "isbn13",
+                                     pages: 100,
+                                     year: 1999,
+                                     rating: 5.0,
+                                     desc: "desc",
+                                     price: "100",
+                                     image: "",
+                                     url: "",
+                                     pdf: [:])
+        
+        func fetchITBook(with title: String, page: Int?, completion: @escaping (Result<ITBooksData, Error>) -> Void) -> Cancellable? {
+            let data = ITBooksData(books: books, page:1, totalPage: 1)
+            completion(.success(data))
+            return nil
+        }
+        
+        func fetchNewITBook(completion: @escaping (Result<[ITBook], Error>) -> Void) -> Cancellable? {
+            completion(.success(books))
+            return nil
+        }
+        
+        func fetchITBookDetail(with isbn13: String, completion: @escaping (Result<ITBookDetail, Error>) -> Void) -> Cancellable? {
+            completion(.success(booDetail))
+            return nil
+        }
+    }
+    
+    override func spec() {
+        describe("SearchResultViewModel에서") {
+            var disposeBag: DisposeBag!
+            var searchResultViewModel: SearchResultViewModel!
+            var scheduler: TestScheduler!
+            var output: SearchResultViewModel.Output!
+            var keywordSubject: PublishSubject<String>!
+            var loadMore: PublishSubject<Void>!
+            var mockRepository: MockITBookRepository!
+            var useCase: DefaultSearchITBookUseCase!
+            
+            beforeEach {
+                disposeBag = DisposeBag()
+                mockRepository = MockITBookRepository()
+                scheduler = TestScheduler(initialClock: 1)
+                useCase = DefaultSearchITBookUseCase(repository: mockRepository)
+                searchResultViewModel = SearchResultViewModel(searchITBookUseCase: useCase)
+                keywordSubject = PublishSubject<String>()
+                loadMore = PublishSubject<Void>()
+                
+                let input = SearchResultViewModel.Input(searchItBooks: keywordSubject.asObservable(),
+                                                        readMore: loadMore.asObservable())
+                
+                output = searchResultViewModel.transform(input: input)
+            }
+            
+            context("1이라는 키워드를 검색하면") {
+                beforeEach {
+                    scheduler.createColdObservable(
+                        [.next(10, "1"),
+                        ])
+                        .bind(to: keywordSubject)
+                        .disposed(by: disposeBag)
+                }
+                
+                it("3개의 책이 반환된다") {
+                    output.searchResult.drive()
+                        .disposed(by: disposeBag)
+                    
+                    scheduler.start()
+                    
+                    let result = try! output.searchResult.toBlocking(timeout: 3).first()
+                    
+                    switch result {
+                    case .success(let (books: books, hasMore: hasMore)):
+                        expect(books).to(equal(mockRepository.books))
+                        expect(hasMore).to(equal(false))
+                    case .failure(_):
+                        fail()
+                    case .none:
+                        fail()
+                    }
                 }
             }
         }

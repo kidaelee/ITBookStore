@@ -10,4 +10,5 @@ import Foundation
 protocol Cancellable {
     @discardableResult
     func cancel() -> Self
+    var isCancelled: Bool { get }
 }

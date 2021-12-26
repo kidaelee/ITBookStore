@@ -14,9 +14,9 @@ struct ITBookStoreRepository: ITBookRepository {
             .request(parameter: EmptyRequest()) { result in
                 switch result {
                 case .success(let response):
-                    let books = response.ITBooks
-                    let isMore = response.total.intValue > response.page.intValue
-                    let data = ITBooksData(books: books, isMore: isMore)
+                    let data = ITBooksData(books: response.ITBooks,
+                                           page: response.page.intValue,
+                                           totalPage: response.total.intValue)
                     completion(.success(data))
                 case .failure(let error):
                     completion(.failure(error))
