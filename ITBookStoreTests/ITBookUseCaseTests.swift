@@ -58,7 +58,8 @@ final class ITBookUseCaseTests: QuickSpec {
 
         describe("SearchITBookUseCase에서") {
             beforeEach {
-                searchITBookUseCase = DefaultSearchITBookUseCase(repository: mockITBookRepository)
+                DIContainer.register(mockITBookRepository as ITBookRepository)
+                searchITBookUseCase = ITBookStoreSearchUseCase()
             }
 
             context("검색이 성공이면 ITBook은") {

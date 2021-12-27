@@ -13,7 +13,7 @@ import RxCocoa
 final class SearchResultViewModel: ViewModelType {
     typealias SearchResult = Result<(books: [ITBook], hasMore: Bool), Error>
     
-    let searchITBookUseCase: SearchITBookUseCase
+    @Inject private var searchITBookUseCase: SearchITBookUseCase
     private var resentlySearchKeyword: String = ""
     private var currentPage = 0
     private var totalPage = 0
@@ -29,10 +29,6 @@ final class SearchResultViewModel: ViewModelType {
     
     struct Output {
         let searchResult: Driver<SearchResult>
-    }
-    
-    init(searchITBookUseCase: SearchITBookUseCase) {
-        self.searchITBookUseCase = searchITBookUseCase
     }
     
     func transform(input: Input) -> Output {
@@ -78,7 +74,12 @@ final class SearchResultViewModel: ViewModelType {
     
     private func searchITBooks(with keyword: String, page: Int?) -> Observable<ITBooksData> {
         return Observable<ITBooksData>.create { [weak self] observer in
-            let cancellable = self?.searchITBookUseCase.searchITBooks(with: keyword, page: page) {
+            guard let self = self else {
+                observer.onCompleted()
+                return Disposables.create()
+            }
+            
+            let cancellable = self.searchITBookUseCase.searchITBooks(with: keyword, page: page) {
                 switch $0 {
                 case .success(let booksData):
                     observer.onNext(booksData)

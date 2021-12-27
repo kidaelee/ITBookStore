@@ -37,8 +37,6 @@ final class SearchTableViewModel: ViewModelType {
                     self?.searchKeywordHistory = self?.searchKeywordHistory.filter { $0 != keyword } ?? []
                 }
                 self?.searchKeywordHistory.insert(keyword, at: 0)
-                
-                self?.searchITBooks(with: keyword)
             })
             .map { [weak self] _ -> [String] in
                 self?.searchKeywordHistory ?? []
@@ -48,9 +46,5 @@ final class SearchTableViewModel: ViewModelType {
         
         
         return Output(recentlySearchKeyword: searchKeywordHistorySubject.asDriver(onErrorJustReturn: []))
-    }
-    
-    private func searchITBooks(with keyword: String) {
-        
     }
 }

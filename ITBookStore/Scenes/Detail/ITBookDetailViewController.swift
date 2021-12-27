@@ -30,7 +30,7 @@ final class ITBookDetailViewController: UIViewController, StoryBoardInstantiable
     
     let bookSubject = BehaviorSubject<ITBook?>(value: nil)
     
-    private let viewModel = ITBookDetailViewModel(searchITBookUseCase: DefaultSearchITBookUseCase(repository: ITBookStoreRepository()))
+    private let viewModel = ITBookDetailViewModel()
     private var disposeBag = DisposeBag()
     
     override func viewDidLoad() {

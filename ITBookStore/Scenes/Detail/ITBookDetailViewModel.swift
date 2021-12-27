@@ -11,8 +11,7 @@ import RxCocoa
 
 final class ITBookDetailViewModel: ViewModelType {
     typealias FetchResult = Result<ITBookDetail, Error>
-    
-    let searchITBookUseCase: SearchITBookUseCase
+    @Inject private var searchITBookUseCase: SearchITBookUseCase
     private var fetchingIndicator = ActivityIndicator()
     private var disposeBag = DisposeBag()
     
@@ -22,10 +21,6 @@ final class ITBookDetailViewModel: ViewModelType {
     
     struct Output {
         var itBookDetail: Driver<FetchResult>
-    }
-    
-    init(searchITBookUseCase: SearchITBookUseCase) {
-        self.searchITBookUseCase = searchITBookUseCase
     }
     
     func transform(input: Input) -> Output {
@@ -46,7 +41,12 @@ final class ITBookDetailViewModel: ViewModelType {
     
     private func fetchITBookDetail(with isbn: String) -> Observable<ITBookDetail> {
         return Observable<ITBookDetail>.create { [weak self] observer in
-            let cancellable = self?.searchITBookUseCase.getITBookDetail(with: isbn) {
+            guard let self = self else {
+                observer.onCompleted()
+                return Disposables.create()
+            }
+            
+            let cancellable = self.searchITBookUseCase.getITBookDetail(with: isbn) {
                 switch $0 {
                 case .success(let bookDetail):
                     observer.onNext(bookDetail)
@@ -56,6 +56,7 @@ final class ITBookDetailViewModel: ViewModelType {
                 
                 observer.onCompleted()
             }
+            
             return Disposables.create {
                 cancellable?.cancel()
             }

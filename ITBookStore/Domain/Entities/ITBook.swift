@@ -21,3 +21,23 @@ extension ITBook: Equatable {
            return lhs.isbn13 == rhs.isbn13
        }
 }
+
+protocol ITBookConvertable {
+    var title: String { get }
+    var subtitle: String { get }
+    var isbn13: String { get }
+    var price: String { get }
+    var image: String { get }
+    var url: String { get }
+}
+
+extension ITBookConvertable {
+    var itBook: ITBook {
+        .init(title: title,
+              subtitle: subtitle,
+              isbn13: isbn13,
+              price: price,
+              image: image,
+              url: url)
+    }
+}

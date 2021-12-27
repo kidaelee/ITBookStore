@@ -64,6 +64,10 @@
 		01EF80F22778A780007D36A5 /* LoadMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EF80F12778A780007D36A5 /* LoadMoreCell.xib */; };
 		01EF80F52779E754007D36A5 /* ITBookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF80F42779E754007D36A5 /* ITBookDetailViewController.swift */; };
 		01EF80FC2779F00B007D36A5 /* ITBookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF80FB2779F00B007D36A5 /* ITBookDetailViewModel.swift */; };
+		01EF80FF277A147A007D36A5 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF80FE277A147A007D36A5 /* DIContainer.swift */; };
+		01EF8101277A14DC007D36A5 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF8100277A14DC007D36A5 /* Inject.swift */; };
+		01EF8103277A16FD007D36A5 /* ITBookStoreSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF8102277A16FD007D36A5 /* ITBookStoreSearchUseCase.swift */; };
+		01EF8105277A1B62007D36A5 /* DefaultMockRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF8104277A1B62007D36A5 /* DefaultMockRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +140,10 @@
 		01EF80F12778A780007D36A5 /* LoadMoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadMoreCell.xib; sourceTree = "<group>"; };
 		01EF80F42779E754007D36A5 /* ITBookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookDetailViewController.swift; sourceTree = "<group>"; };
 		01EF80FB2779F00B007D36A5 /* ITBookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookDetailViewModel.swift; sourceTree = "<group>"; };
+		01EF80FE277A147A007D36A5 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		01EF8100277A14DC007D36A5 /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
+		01EF8102277A16FD007D36A5 /* ITBookStoreSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookStoreSearchUseCase.swift; sourceTree = "<group>"; };
+		01EF8104277A1B62007D36A5 /* DefaultMockRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMockRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,14 +268,15 @@
 		01A0FC212775F70300F30271 /* ITBookStore */ = {
 			isa = PBXGroup;
 			children = (
+				01EF80FD277A1463007D36A5 /* DIContainer */,
+				01A0FC772776129400F30271 /* ITBookStoreUseCase */,
 				01EF80C22778195E007D36A5 /* Scenes */,
-				01A0FC6E2776057300F30271 /* Domain */,
 				017A572B27775BFB00642F72 /* Util */,
 				017A572827774E9800642F72 /* DataCache */,
 				010262B02776C92C00256906 /* Common */,
 				01A0FC782776130100F30271 /* Network */,
-				01A0FC772776129400F30271 /* Repositories */,
 				010262AD2776C55800256906 /* Extensions */,
+				01A0FC6E2776057300F30271 /* Domain */,
 				01A0FC222775F70300F30271 /* AppDelegate.swift */,
 				01A0FC242775F70300F30271 /* SceneDelegate.swift */,
 				01A0FC282775F70300F30271 /* Main.storyboard */,
@@ -282,6 +291,7 @@
 		01A0FC382775F70500F30271 /* ITBookStoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				01EF8104277A1B62007D36A5 /* DefaultMockRepository.swift */,
 				01A0FC392775F70500F30271 /* ITBookStoreEntityTests.swift */,
 				01A0FC7227760D7100F30271 /* ITBookUseCaseTests.swift */,
 				017A572E27776A7800642F72 /* ITBookStoreCacheTests.swift */,
@@ -344,12 +354,13 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		01A0FC772776129400F30271 /* Repositories */ = {
+		01A0FC772776129400F30271 /* ITBookStoreUseCase */ = {
 			isa = PBXGroup;
 			children = (
 				01A0FC792776160800F30271 /* ITBookStoreRepository.swift */,
+				01EF8102277A16FD007D36A5 /* ITBookStoreSearchUseCase.swift */,
 			);
-			path = Repositories;
+			path = ITBookStoreUseCase;
 			sourceTree = "<group>";
 		};
 		01A0FC782776130100F30271 /* Network */ = {
@@ -401,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				01EF80E2277870D9007D36A5 /* ActivityIndicator.swift */,
+				01EF8100277A14DC007D36A5 /* Inject.swift */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -431,6 +443,14 @@
 				01EF80FB2779F00B007D36A5 /* ITBookDetailViewModel.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		01EF80FD277A1463007D36A5 /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				01EF80FE277A147A007D36A5 /* DIContainer.swift */,
+			);
+			path = DIContainer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -590,6 +610,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				010262AF2776C56500256906 /* String+Extension.swift in Sources */,
+				01EF80FF277A147A007D36A5 /* DIContainer.swift in Sources */,
 				01EF80F52779E754007D36A5 /* ITBookDetailViewController.swift in Sources */,
 				017A571D2776E46600642F72 /* API+NewITBooks.swift in Sources */,
 				01EF80CD27781A86007D36A5 /* SearchTableViewController.swift in Sources */,
@@ -598,6 +619,7 @@
 				01A0FC232775F70300F30271 /* AppDelegate.swift in Sources */,
 				010262AC2776BC1100256906 /* API+ITBookDetail.swift in Sources */,
 				01A0FC832776184A00F30271 /* ResponseConvertable.swift in Sources */,
+				01EF8103277A16FD007D36A5 /* ITBookStoreSearchUseCase.swift in Sources */,
 				01A0FC252775F70300F30271 /* SceneDelegate.swift in Sources */,
 				01EF80E927789D2F007D36A5 /* SearchResultSectionItem.swift in Sources */,
 				017A5727277744E400642F72 /* UIImageView+Downloader.swift in Sources */,
@@ -616,6 +638,7 @@
 				01A0FC7C2776175D00F30271 /* API.swift in Sources */,
 				01EF80D9277828E2007D36A5 /* SearchTableViewModel.swift in Sources */,
 				01A0FC8927761B1D00F30271 /* APIError.swift in Sources */,
+				01EF8101277A14DC007D36A5 /* Inject.swift in Sources */,
 				01A0FC662775FC3400F30271 /* ITBook.swift in Sources */,
 				01EF80D227781D7E007D36A5 /* SearchResultViewController.swift in Sources */,
 				01EF80FC2779F00B007D36A5 /* ITBookDetailViewModel.swift in Sources */,
@@ -630,6 +653,7 @@
 			files = (
 				017A571B2776DD1000642F72 /* ITBookSotreAPITests.swift in Sources */,
 				01A0FC3A2775F70500F30271 /* ITBookStoreEntityTests.swift in Sources */,
+				01EF8105277A1B62007D36A5 /* DefaultMockRepository.swift in Sources */,
 				01EF80DB277833D0007D36A5 /* ITBookStoreViewModelTests.swift in Sources */,
 				017A572F27776A7800642F72 /* ITBookStoreCacheTests.swift in Sources */,
 				017A573127778F1900642F72 /* ITBookStoreImageViewTests.swift in Sources */,

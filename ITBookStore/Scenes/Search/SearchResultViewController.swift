@@ -25,7 +25,7 @@ final class SearchResultViewController: UIViewController, StoryBoardInstantiable
     @IBOutlet private var tableView: UITableView!
     private let loadMoreSubject = PublishSubject<Void> ()
     private let sectionModelSubject = BehaviorSubject<[SearchResultSectionModel]>(value: [])
-    private let viewModel = SearchResultViewModel(searchITBookUseCase: DefaultSearchITBookUseCase(repository: ITBookStoreRepository()))
+    private let viewModel = SearchResultViewModel()
     private var disposeBag = DisposeBag()
     weak var delegate: SearchResultViewControllerDelegate?
     
