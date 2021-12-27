@@ -11,12 +11,14 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
+protocol SearchResultViewControllerDelegate: AnyObject {
+    func didSelectedITBook(_ itBook: ITBook)
+}
+
 final class SearchResultViewController: UIViewController, StoryBoardInstantiable {
     typealias Keyworkd = String
     
-    static var storyboardName: String {
-        "Main"
-    }
+    static var storyboardName: String { "Main" }
     
     let searchITBookSubject = PublishSubject<Keyworkd>()
     
@@ -25,6 +27,7 @@ final class SearchResultViewController: UIViewController, StoryBoardInstantiable
     private let sectionModelSubject = BehaviorSubject<[SearchResultSectionModel]>(value: [])
     private let viewModel = SearchResultViewModel(searchITBookUseCase: DefaultSearchITBookUseCase(repository: ITBookStoreRepository()))
     private var disposeBag = DisposeBag()
+    weak var delegate: SearchResultViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +56,19 @@ final class SearchResultViewController: UIViewController, StoryBoardInstantiable
         tableView.rx
             .modelSelected(SearchResultSectionItem.self)
             .subscribe(onNext: { [weak self] sectionItem in
-                
-                
+                switch sectionItem {
+                case .ITBook(let book):
+                    self?.delegate?.didSelectedITBook(book)
+                case .loadMore:
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        tableView.rx
+            .itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                self?.tableView.deselectRow(at: indexPath, animated: false)
             })
             .disposed(by: disposeBag)
         
@@ -84,12 +98,11 @@ final class SearchResultViewController: UIViewController, StoryBoardInstantiable
         
         let booksSectionModel = SearchResultSectionModel.ITBookSection(title: "Books",
                                                                        itmes: itBooks.map { SearchResultSectionItem.ITBook($0)  })
-        
         let loadMoreSectionModel = SearchResultSectionModel.loadMore(title: "Load more",
                                                                      items: hasMore ? [SearchResultSectionItem.loadMore] : [])
             
-        
         sectionModelSubject.onNext([booksSectionModel, loadMoreSectionModel])
+        tableView.isHidden = itBooks.count == 0
     }
     
     private func sectionReoadDataSource() -> RxTableViewSectionedReloadDataSource<SearchResultSectionModel>{

@@ -118,7 +118,7 @@ final class ITBookStoreSearchResultViewModelTests: QuickSpec {
                 keywordSubject = PublishSubject<String>()
                 loadMore = PublishSubject<Void>()
                 
-                let input = SearchResultViewModel.Input(searchItBooks: keywordSubject.asObservable(),
+                let input = SearchResultViewModel.Input(searchITBooks: keywordSubject.asObservable(),
                                                         readMore: loadMore.asObservable())
                 
                 output = searchResultViewModel.transform(input: input)
@@ -145,6 +145,99 @@ final class ITBookStoreSearchResultViewModelTests: QuickSpec {
                     case .success(let (books: books, hasMore: hasMore)):
                         expect(books).to(equal(mockRepository.books))
                         expect(hasMore).to(equal(false))
+                    case .failure(_):
+                        fail()
+                    case .none:
+                        fail()
+                    }
+                }
+            }
+        }
+    }
+}
+
+final class ITBookStoreDetailViewModelTests: QuickSpec {
+    struct MockITBookRepository: ITBookRepository {
+        let books = [
+            ITBook(title: "title", subtitle: "subtitle", isbn13: "isbn13", price: "100", image: "", url: "")
+        ]
+        
+        let booDetail = ITBookDetail(title: "title",
+                                     subtitle: "subtitle",
+                                     authors: "authors",
+                                     publisher: "publisher",
+                                     language: "language",
+                                     isbn10: "isbn10",
+                                     isbn13: "isbn13",
+                                     pages: 100,
+                                     year: 1999,
+                                     rating: 5.0,
+                                     desc: "desc",
+                                     price: "100",
+                                     image: "",
+                                     url: "",
+                                     pdf: [:])
+        
+        func fetchITBook(with title: String, page: Int?, completion: @escaping (Result<ITBooksData, Error>) -> Void) -> Cancellable? {
+            let data = ITBooksData(books: books, page:1, totalPage: 1)
+            completion(.success(data))
+            return nil
+        }
+        
+        func fetchNewITBook(completion: @escaping (Result<[ITBook], Error>) -> Void) -> Cancellable? {
+            completion(.success(books))
+            return nil
+        }
+        
+        func fetchITBookDetail(with isbn13: String, completion: @escaping (Result<ITBookDetail, Error>) -> Void) -> Cancellable? {
+            completion(.success(booDetail))
+            return nil
+        }
+    }
+        
+    override func spec() {
+        describe("ITBookStoreDetailViewModel 에서") {
+            var disposeBag: DisposeBag!
+            var booksDetailViewModel: ITBookDetailViewModel!
+            var scheduler: TestScheduler!
+            var output: ITBookDetailViewModel.Output!
+            var bookSubject: PublishSubject<ITBook>!
+            var mockRepository: MockITBookRepository!
+            var useCase: DefaultSearchITBookUseCase!
+            
+            beforeEach {
+                disposeBag = DisposeBag()
+                mockRepository = MockITBookRepository()
+                scheduler = TestScheduler(initialClock: 1)
+                useCase = DefaultSearchITBookUseCase(repository: mockRepository)
+                booksDetailViewModel = ITBookDetailViewModel(searchITBookUseCase: useCase)
+                bookSubject = PublishSubject<ITBook>()
+                
+                let intput = ITBookDetailViewModel.Input(fecthITBookDetail: bookSubject.asObservable())
+                output = booksDetailViewModel.transform(input: intput)
+            }
+            
+            context("책 상세를 요청하면") {
+                beforeEach {
+                    scheduler.createColdObservable(
+                        [.next(10, mockRepository.books[0]),
+                        ])
+                        .bind(to: bookSubject)
+                        .disposed(by: disposeBag)
+                }
+                
+                it("책 상세가 응답된다") {
+                    output.itBookDetail
+                        .drive()
+                        .disposed(by: disposeBag)
+                    
+                    scheduler.start()
+                    
+                    let result = try! output.itBookDetail.toBlocking(timeout: 3).first()
+                    
+                    switch result {
+                    case .success(let detail):
+                        expect(detail).to(equal(mockRepository.booDetail))
                     case .failure(_):
                         fail()
                     case .none:

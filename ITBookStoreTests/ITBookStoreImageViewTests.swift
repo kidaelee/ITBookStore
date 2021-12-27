@@ -36,7 +36,7 @@ final class ITBookStoreImageViewTests: QuickSpec {
                 }
                 
                 it("이미지가 할당 된다") {
-                    expect(imageView.image).toNot(beNil())
+                    expect(imageView.image).toNotEventually(beNil())
                 }
                 
                 it("메모리에 이미지가 캐시된다") {

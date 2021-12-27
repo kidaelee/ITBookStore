@@ -7,16 +7,15 @@
 
 import Foundation
 import UIKit
-import Then
 import RxSwift
 import RxCocoa
 
 final class SearchTableViewController: UITableViewController {
     private lazy var searchController: UISearchController = {
-        UISearchController(searchResultsController: searchResultController).then {
-            $0.searchResultsUpdater = self as UISearchResultsUpdating
-            $0.searchBar.autocapitalizationType = .none
-        }
+        let searchController =  UISearchController(searchResultsController: searchResultController)
+        searchController.searchResultsUpdater = self as UISearchResultsUpdating
+        searchController.searchBar.autocapitalizationType = .none
+        return searchController
     }()
     
     private var searchBar: UISearchBar {
@@ -24,7 +23,9 @@ final class SearchTableViewController: UITableViewController {
     }
     
     private lazy var searchResultController: SearchResultViewController = {
-        SearchResultViewController.instantiateFromStoryboard()
+        let searchResultViewController = SearchResultViewController.instantiateFromStoryboard()
+        searchResultViewController.delegate = self
+        return searchResultViewController
     }()
     
     private var viewModel = SearchTableViewModel()
@@ -34,9 +35,17 @@ final class SearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         configureSearchController()
         bindUI()
         bindViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.sizeToFit()
     }
     
     private func configureSearchController() {
@@ -70,6 +79,7 @@ final class SearchTableViewController: UITableViewController {
                 self?.searchBar.text = keyword
                 self?.searchBar.endEditing(true)
                 self?.searchKeywordSubject.onNext(keyword)
+                self?.searchResultController.searchITBookSubject.onNext(keyword)
             })
             .disposed(by: disposeBag)
     }
@@ -88,5 +98,14 @@ final class SearchTableViewController: UITableViewController {
 extension SearchTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         
+    }
+}
+
+extension SearchTableViewController: SearchResultViewControllerDelegate {
+    func didSelectedITBook(_ itBook: ITBook) {
+        let vc = ITBookDetailViewController.instantiateFromStoryboard()
+        vc.bookSubject.onNext(itBook)
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

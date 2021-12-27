@@ -48,9 +48,7 @@
 		01A0FC8D27762C4D00F30271 /* API+ITBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0FC8C27762C4D00F30271 /* API+ITBooks.swift */; };
 		01EF80C627781A43007D36A5 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = 01EF80C527781A43007D36A5 /* Differentiator */; };
 		01EF80C827781A43007D36A5 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 01EF80C727781A43007D36A5 /* RxDataSources */; };
-		01EF80CB27781A74007D36A5 /* RxOptional in Frameworks */ = {isa = PBXBuildFile; productRef = 01EF80CA27781A74007D36A5 /* RxOptional */; };
 		01EF80CD27781A86007D36A5 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF80CC27781A86007D36A5 /* SearchTableViewController.swift */; };
-		01EF80D027781C26007D36A5 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 01EF80CF27781C26007D36A5 /* Then */; };
 		01EF80D227781D7E007D36A5 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF80D127781D7E007D36A5 /* SearchResultViewController.swift */; };
 		01EF80D7277824EC007D36A5 /* StoryBoardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF80D6277824EC007D36A5 /* StoryBoardInstantiable.swift */; };
 		01EF80D9277828E2007D36A5 /* SearchTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF80D8277828E2007D36A5 /* SearchTableViewModel.swift */; };
@@ -64,6 +62,8 @@
 		01EF80EE2778A6F3007D36A5 /* ITBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EF80ED2778A6F3007D36A5 /* ITBookCell.xib */; };
 		01EF80F02778A75E007D36A5 /* LoadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF80EF2778A75E007D36A5 /* LoadMoreCell.swift */; };
 		01EF80F22778A780007D36A5 /* LoadMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EF80F12778A780007D36A5 /* LoadMoreCell.xib */; };
+		01EF80F52779E754007D36A5 /* ITBookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF80F42779E754007D36A5 /* ITBookDetailViewController.swift */; };
+		01EF80FC2779F00B007D36A5 /* ITBookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EF80FB2779F00B007D36A5 /* ITBookDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +134,8 @@
 		01EF80ED2778A6F3007D36A5 /* ITBookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ITBookCell.xib; sourceTree = "<group>"; };
 		01EF80EF2778A75E007D36A5 /* LoadMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCell.swift; sourceTree = "<group>"; };
 		01EF80F12778A780007D36A5 /* LoadMoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadMoreCell.xib; sourceTree = "<group>"; };
+		01EF80F42779E754007D36A5 /* ITBookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookDetailViewController.swift; sourceTree = "<group>"; };
+		01EF80FB2779F00B007D36A5 /* ITBookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITBookDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,10 +143,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01EF80CB27781A74007D36A5 /* RxOptional in Frameworks */,
 				01A0FC5B2775F99400F30271 /* RxSwift in Frameworks */,
 				01EF80C627781A43007D36A5 /* Differentiator in Frameworks */,
-				01EF80D027781C26007D36A5 /* Then in Frameworks */,
 				01A0FC7F277617C300F30271 /* Alamofire in Frameworks */,
 				01EF80C827781A43007D36A5 /* RxDataSources in Frameworks */,
 				01A0FC592775F99400F30271 /* RxRelay in Frameworks */,
@@ -378,6 +378,7 @@
 		01EF80C22778195E007D36A5 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				01EF80F32779DAF3007D36A5 /* Detail */,
 				01EF80C32778198A007D36A5 /* Search */,
 			);
 			path = Scenes;
@@ -423,6 +424,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		01EF80F32779DAF3007D36A5 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				01EF80F42779E754007D36A5 /* ITBookDetailViewController.swift */,
+				01EF80FB2779F00B007D36A5 /* ITBookDetailViewModel.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -446,8 +456,6 @@
 				01A0FC7E277617C300F30271 /* Alamofire */,
 				01EF80C527781A43007D36A5 /* Differentiator */,
 				01EF80C727781A43007D36A5 /* RxDataSources */,
-				01EF80CA27781A74007D36A5 /* RxOptional */,
-				01EF80CF27781C26007D36A5 /* Then */,
 			);
 			productName = ITBookStore;
 			productReference = 01A0FC1F2775F70300F30271 /* ITBookStore.app */;
@@ -535,8 +543,6 @@
 				01A0FC612775F9DB00F30271 /* XCRemoteSwiftPackageReference "RxNimble" */,
 				01A0FC7D277617C300F30271 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				01EF80C427781A43007D36A5 /* XCRemoteSwiftPackageReference "RxDataSources" */,
-				01EF80C927781A74007D36A5 /* XCRemoteSwiftPackageReference "RxOptional" */,
-				01EF80CE27781C26007D36A5 /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 01A0FC202775F70300F30271 /* Products */;
 			projectDirPath = "";
@@ -584,6 +590,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				010262AF2776C56500256906 /* String+Extension.swift in Sources */,
+				01EF80F52779E754007D36A5 /* ITBookDetailViewController.swift in Sources */,
 				017A571D2776E46600642F72 /* API+NewITBooks.swift in Sources */,
 				01EF80CD27781A86007D36A5 /* SearchTableViewController.swift in Sources */,
 				01A0FC8D27762C4D00F30271 /* API+ITBooks.swift in Sources */,
@@ -611,6 +618,7 @@
 				01A0FC8927761B1D00F30271 /* APIError.swift in Sources */,
 				01A0FC662775FC3400F30271 /* ITBook.swift in Sources */,
 				01EF80D227781D7E007D36A5 /* SearchResultViewController.swift in Sources */,
+				01EF80FC2779F00B007D36A5 /* ITBookDetailViewModel.swift in Sources */,
 				01EF80E127785229007D36A5 /* SearchResultViewModel.swift in Sources */,
 				017A572A27774EA500642F72 /* DataCacheable.swift in Sources */,
 			);
@@ -1027,22 +1035,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		01EF80C927781A74007D36A5 /* XCRemoteSwiftPackageReference "RxOptional" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RxSwiftCommunity/RxOptional";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		01EF80CE27781C26007D36A5 /* XCRemoteSwiftPackageReference "Then" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devxoul/Then";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1095,16 +1087,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 01EF80C427781A43007D36A5 /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
-		};
-		01EF80CA27781A74007D36A5 /* RxOptional */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 01EF80C927781A74007D36A5 /* XCRemoteSwiftPackageReference "RxOptional" */;
-			productName = RxOptional;
-		};
-		01EF80CF27781C26007D36A5 /* Then */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 01EF80CE27781C26007D36A5 /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
 		};
 		01EF80DC277849DA007D36A5 /* RxRelay */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -15,7 +15,13 @@
     {
       "parallelizable" : true,
       "skippedTests" : [
+        "ITBookStoreDetailViewModelTests",
+        "ITBookStoreDiskCacheTests",
         "ITBookStoreEntityTests",
+        "ITBookStoreImageViewTests",
+        "ITBookStoreMemoryCacheTests",
+        "ITBookStoreSearchResultViewModelTests",
+        "ITBookStoreSearchTableViewModelTests",
         "ITBookUseCaseTests"
       ],
       "target" : {

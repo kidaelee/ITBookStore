@@ -19,7 +19,6 @@ final class SearchResultViewModel: ViewModelType {
     private var totalPage = 0
     private var hasMorePage: Bool { currentPage < totalPage }
     private var nextPage: Int { hasMorePage ? currentPage + 1 : currentPage }
-    private var searchinIndicator = ActivityIndicator()
     private var searchResult: [ITBook] = []
     private var disposeBag = DisposeBag()
     
@@ -30,7 +29,6 @@ final class SearchResultViewModel: ViewModelType {
     
     struct Output {
         let searchResult: Driver<SearchResult>
-        let isLoading: Driver<Bool>
     }
     
     init(searchITBookUseCase: SearchITBookUseCase) {
@@ -49,7 +47,6 @@ final class SearchResultViewModel: ViewModelType {
                 guard let self = self else { return Observable.empty() }
                 return self.searchITBooks(with: keyword, page: 1)
             }
-            .trackActivity(searchinIndicator)
             .do(onNext: { [weak self] booksData in
                 self?.totalPage = booksData.totalPage
                 self?.currentPage = booksData.page
@@ -58,11 +55,10 @@ final class SearchResultViewModel: ViewModelType {
             .map { SearchResult.success((books: $0.books, hasMore: $0.page < $0.totalPage)) }
         
         let searchMore = input.readMore
-            .flatMapLatest { [weak self] _ -> Observable<ITBooksData>  in
+            .flatMapFirst { [weak self] _ -> Observable<ITBooksData>  in
                 guard let self = self, self.hasMorePage else { return Observable.empty() }
                 return self.searchITBooks(with: self.resentlySearchKeyword, page: self.currentPage + 1)
             }
-            .trackActivity(searchinIndicator)
             .do(onNext: { [weak self] booksData in
                 self?.totalPage = booksData.totalPage
                 self?.currentPage = booksData.page
@@ -76,11 +72,8 @@ final class SearchResultViewModel: ViewModelType {
             .asDriver(onErrorRecover: { error in
                 Driver.just(.failure(error))
             })
-
-        let isLoading = searchinIndicator.asDriver(onErrorJustReturn: false)
         
-        return Output(searchResult: searchResult,
-                      isLoading: isLoading)
+        return Output(searchResult: searchResult)
     }
     
     private func searchITBooks(with keyword: String, page: Int?) -> Observable<ITBooksData> {
