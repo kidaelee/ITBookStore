@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 
 final class ITBookDetailViewController: UIViewController, StoryBoardInstantiable, AlsertPresentable {
-    typealias ISBN = String
     static var storyboardName: String { "Main" }
     
     @IBOutlet private weak var containerView: UIView!
