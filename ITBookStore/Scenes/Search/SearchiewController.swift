@@ -1,5 +1,5 @@
 //
-//  SearchTableViewController.swift
+//  SearchiewController.swift
 //  ITBookStore
 //
 //  Created by Nick on 2021/12/26.
@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class SearchTableViewController: UITableViewController {
+final class SearchiewController: UITableViewController {
     private lazy var searchController: UISearchController = {
         let searchController =  UISearchController(searchResultsController: searchResultController)
         searchController.searchResultsUpdater = self as UISearchResultsUpdating
@@ -28,7 +28,7 @@ final class SearchTableViewController: UITableViewController {
         return searchResultViewController
     }()
     
-    private var viewModel = SearchTableViewModel()
+    private var viewModel = SearchViewModel()
     private var searchKeywordSubject = PublishSubject<String>()
     private var disposeBag = DisposeBag()
     
@@ -93,19 +93,23 @@ final class SearchTableViewController: UITableViewController {
             }
             .disposed(by: disposeBag)
     }
+    
+    private func goToitBookDetailView(with itBook: ITBook) {
+        let vc = ITBookDetailViewController.instantiateFromStoryboard()
+        vc.bookSubject.onNext(itBook)
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
-extension SearchTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension SearchiewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         
     }
 }
 
-extension SearchTableViewController: SearchResultViewControllerDelegate {
+extension SearchiewController: SearchResultViewControllerDelegate {
     func didSelectedITBook(_ itBook: ITBook) {
-        let vc = ITBookDetailViewController.instantiateFromStoryboard()
-        vc.bookSubject.onNext(itBook)
-        
-        navigationController?.pushViewController(vc, animated: true)
+        goToitBookDetailView(with: itBook)
     }
 }

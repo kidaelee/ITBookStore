@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class SearchTableViewModel: ViewModelType {
+final class SearchViewModel: ViewModelType {
     private var resentlySearchKeyword: String = ""
     private var searchKeywordHistory: [String] = []
     private var currentPage = 0

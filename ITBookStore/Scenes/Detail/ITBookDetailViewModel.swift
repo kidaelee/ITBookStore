@@ -27,13 +27,13 @@ final class ITBookDetailViewModel: ViewModelType {
         
         let itBookDetail = input.fecthITBookDetail
             .flatMapLatest { [weak self] book -> Observable<ITBookDetail> in
-                guard let self = self else { return Observable.empty() }
+                guard let self = self else { return .empty() }
                 return self.fetchITBookDetail(with: book.isbn13)
                     .trackActivity(self.fetchingIndicator)
             }
             .map { FetchResult.success($0) }
             .asDriver(onErrorRecover: { error in
-                Driver.just(.failure(error))
+                .just(.failure(error))
             })
         
         return Output(itBookDetail: itBookDetail)

@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class ITBookDetailViewController: UIViewController, StoryBoardInstantiable {
+final class ITBookDetailViewController: UIViewController, StoryBoardInstantiable, AlsertPresentable {
     typealias ISBN = String
     static var storyboardName: String { "Main" }
     
@@ -60,8 +60,8 @@ final class ITBookDetailViewController: UIViewController, StoryBoardInstantiable
                 switch result {
                 case .success(let bookDetail):
                     self?.setITBookDetail(with: bookDetail)
-                case .failure(_):
-                    break
+                case .failure(let error):
+                    self?.presentDefaultAlert(with: "Error", message: error.localizedDescription)
                 }
             }
             .disposed(by: disposeBag)

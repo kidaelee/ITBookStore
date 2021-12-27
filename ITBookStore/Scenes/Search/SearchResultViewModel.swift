@@ -40,7 +40,7 @@ final class SearchResultViewModel: ViewModelType {
                 self?.totalPage = 0
             })
             .flatMapLatest { [weak self] keyword -> Observable<ITBooksData> in
-                guard let self = self else { return Observable.empty() }
+                guard let self = self else { return .empty() }
                 return self.searchITBooks(with: keyword, page: 1)
             }
             .do(onNext: { [weak self] booksData in
@@ -52,7 +52,7 @@ final class SearchResultViewModel: ViewModelType {
         
         let searchMore = input.readMore
             .flatMapFirst { [weak self] _ -> Observable<ITBooksData>  in
-                guard let self = self, self.hasMorePage else { return Observable.empty() }
+                guard let self = self, self.hasMorePage else { return .empty() }
                 return self.searchITBooks(with: self.resentlySearchKeyword, page: self.currentPage + 1)
             }
             .do(onNext: { [weak self] booksData in
@@ -66,7 +66,7 @@ final class SearchResultViewModel: ViewModelType {
         
         let searchResult = Observable<SearchResult>.merge(search, searchMore)
             .asDriver(onErrorRecover: { error in
-                Driver.just(.failure(error))
+                .just(.failure(error))
             })
         
         return Output(searchResult: searchResult)

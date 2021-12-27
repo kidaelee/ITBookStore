@@ -17,15 +17,15 @@ import RxNimble
 final class ITBookStoreSearchTableViewModelTests: QuickSpec {
     override func spec() {
         describe("SearchTableViewModel에") {
-            var searchTableViewModel: SearchTableViewModel!
-            var output: SearchTableViewModel.Output!
+            var searchTableViewModel: SearchViewModel!
+            var output: SearchViewModel.Output!
             var keywordSubject: PublishSubject<String>!
             var scheduler: TestScheduler!
             var disposeBag: DisposeBag!
             
             beforeEach {
                 disposeBag = DisposeBag()
-                searchTableViewModel = SearchTableViewModel()
+                searchTableViewModel = SearchViewModel()
                 scheduler = TestScheduler(initialClock: 0)
                 disposeBag = DisposeBag()
                 keywordSubject = PublishSubject<String>()

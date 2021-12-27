@@ -15,7 +15,7 @@ protocol SearchResultViewControllerDelegate: AnyObject {
     func didSelectedITBook(_ itBook: ITBook)
 }
 
-final class SearchResultViewController: UIViewController, StoryBoardInstantiable {
+final class SearchResultViewController: UIViewController, StoryBoardInstantiable, AlsertPresentable {
     typealias Keyworkd = String
     
     static var storyboardName: String { "Main" }
@@ -87,8 +87,8 @@ final class SearchResultViewController: UIViewController, StoryBoardInstantiable
                 case .success(let booksData):
                     self?.emitDataSource(whit: booksData.books,
                                          hasMore: booksData.hasMore)
-                case .failure(_):
-                    break
+                case .failure(let error):
+                    self?.presentDefaultAlert(with: "Error", message: error.localizedDescription)
                 }
             }
             .disposed(by: disposeBag)
